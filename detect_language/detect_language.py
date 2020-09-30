@@ -18,13 +18,16 @@ class LanguageChecker(object):
                                        use_multiprocessing: bool = False):
         if use_multiprocessing and cores > 1:
             # language = [lang for lang in [language] for x in range(len(sentences))]
-            pool = Pool(cores)
-            output = pool.starmap(detector, sentences)
-            pool.close()
-            pool.join()
+            with Pool(cores) as p:
+                output = p.map(detector, sentences)
             return output
-        else:
-            return list(map(detector, sentences))
+        #     pool = Pool(cores)
+        #     output = pool.starmap(detector, sentences)
+        #     pool.close()
+        #     pool.join()
+        #     return output
+        # else:
+        #     return list(map(detector, sentences))
 
 # if __name__ == '__main__':
 #     c = LanguageChecker()
