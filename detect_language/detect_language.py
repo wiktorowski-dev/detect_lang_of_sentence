@@ -26,11 +26,14 @@ class LanguageChecker(object):
         #     pool.close()
         #     pool.join()
         #     return output
-        # else:
-        #     return list(map(detector, sentences))
+        else:
+            return list(map(detector, sentences))
 
 # if __name__ == '__main__':
 #     c = LanguageChecker()
-#     s = []
-#     out = c.detect_language_of_sentences(sentences=s, cores=1, use_multiprocessing=True)
+#     s = ['kappa',
+#          'hi',
+#          'hello here you are good',
+#          'detection']
+#     out = c.detect_language_of_sentences(sentences=s, cores=2, use_multiprocessing=True)
 #     print(2)
