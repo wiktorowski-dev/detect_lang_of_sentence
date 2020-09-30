@@ -5,7 +5,10 @@ from multiprocessing import Pool
 def detector(sentence):
     if not sentence:
         return
-    lang = langdetect.detect(sentence)
+    try:
+        lang = langdetect.detect(sentence)
+    except:
+        return None
     return tuple([sentence, lang])
 
 
